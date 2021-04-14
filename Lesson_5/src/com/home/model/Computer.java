@@ -1,45 +1,68 @@
 package com.home.model;
 
-import java.util.Random;
 import java.util.Scanner;
 
-public  class Computer {
+public class Computer {
+    public boolean burnedOut;
     String processor;
     int ram;
     int hardDrive;
     int fullCycleResource;
-    int count;
+    Boolean turnedOn;
+
+
+    public Computer(String processor, int ram, int hardDrive, int fullCycleResource) {
+        this.processor = processor;
+        this.ram = ram;
+        this.hardDrive = hardDrive;
+        this.fullCycleResource = fullCycleResource;
+    }
 
     public void output() {
-        System.out.printf("Процессор " + processor + ". Оперативная память " + ram + " GB. Жесткий диск на " + hardDrive + " GB. Ресурс полный циклов равен " + fullCycleResource);
+        System.out.println("Процессор " + processor + ". Оперативная память " + ram + " GB. Жесткий диск на " + hardDrive + " GB. Ресурс полный циклов равен " + fullCycleResource);
     }
-    public void on(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Внимание! Введите 0 или 1");
-        int number;
-        number = scanner.nextInt();
-        Random random = new Random();
-        count = random.nextInt(1);
-        if (count == number) {
-            off();
-        } else if (count != number){
-            System.out.println("Компьютер сгоре!");
-        }
-        for (int i = 0; i < fullCycleResource; i++) {
-            if (i >= fullCycleResource) {
-                System.out.println("Компьютер сгоре!");
+
+    public boolean on() {
+        if (!burnedOut) {
+            if (fullCycleResource != 0 && action()) {
+                turnedOn = true;
+                System.out.println("Компьютер включен");
+                return true;
+            } else {
+                System.out.println("Компьюетр не включится");
+                burnedOut = true;
+                return false;
             }
-
+        } else {
+            System.out.println("Компьютер сгорел");
+            return false;
         }
-
-    }
-    public void off(){
-        System.out.println("Компьютер выключен");
-
-    }
-    public void computerBurnedOut(){
-        System.out.println("Компьютер сгорел!");
-
     }
 
+    public void off() {
+        if (turnedOn) {
+            turnedOn = false;
+            System.out.println("Компьютер выключен");
+            fullCycleResource--;
+        }
+    }
+
+    public boolean action() {
+        System.out.println("Внимание! Введите 0 или 1");
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            if (scanner.hasNextLine()) {
+                int x = scanner.nextInt();
+                if (x == 0 || x == 1) {
+                    int rand = (int) (Math.random() * 2);
+                    return true;
+                }
+            }
+        }
+    }
+
+    public void numberOfCycles() {
+        System.out.println("Циклов осталось - " + fullCycleResource);
+    }
 }
+

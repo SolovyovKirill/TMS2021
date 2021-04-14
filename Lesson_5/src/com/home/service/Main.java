@@ -4,15 +4,16 @@ import com.home.model.Computer;
 
 public class Main {
     public static void main(String[] args) {
-        Computer computer = new Computer();//Павел, что-то я застрял тут, не понимаю как правильно сгенерировать конструктор и передать в него значения
+        Computer computer = new Computer("AMD", 8, 500, 2);
+        computer.output();
+        for (int i = 0; i < 3; i++) {
+            computer.on();
+            if (computer.burnedOut) {
+                break;
+            }
+            computer.off();
+            computer.numberOfCycles();
 
-            this.processor = "AMD";
-            this.ram = 8;
-            this.hardDrive = 500;
-            this.fullCycleResource = 20;
-
-
-
+        }
     }
-
 }
