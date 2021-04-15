@@ -1,7 +1,7 @@
 public class MilitaryOffice {
     private PersonRegistry personRegistry;
 
-    public MilitaryOffice(PersonRegistry personRegistry) {//конструктор
+    public MilitaryOffice(PersonRegistry personRegistry) {//конструктор,
         this.personRegistry = personRegistry;
     }
 

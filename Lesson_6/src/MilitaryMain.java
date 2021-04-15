@@ -25,7 +25,7 @@ public class MilitaryMain {
 
         MilitaryOffice office = new MilitaryOffice(registry);
         System.out.println(office.nameAlexander("Alexander"));//это строкой я вызываю метод из класса MilitaryOffice,
-        System.out.println((office.));//тут нужно вызвать методы из класса PersonRegistry или нет?
+        System.out.println((office.));//тут нужно вызвать методы из класса PersonRegistry или нет?,
 
     }
 }

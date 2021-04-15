@@ -27,7 +27,7 @@ public class PersonRegistry {
         return count;
     }
 
-    public int countPeopleOld(String sex, int age) {//Количество призывников от 25 до 27
+    public int countPeopleOld(String sex, int age) {//Количество призывников от 25 до 27,
         int count = 0;
         for (Person person : citizens) {
             Address personsAdress = person.getAddress();
