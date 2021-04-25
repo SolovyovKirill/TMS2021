@@ -13,6 +13,7 @@ public class Car {
         this.price = price;
     }
 
+
     public String getBrand() {
         return brand;
     }
@@ -41,9 +42,9 @@ public class Car {
         Random random = new Random();
         int rand = random.nextInt(20);
         if ((rand % 2) == 0) {
-            throw new StartException();
+            throw new StartException(brand + " машина не завелась!");
         } else {
-            System.out.println("Машина завелась!");
+            System.out.println(brand + " машина завелась!");
         }
 
     }
